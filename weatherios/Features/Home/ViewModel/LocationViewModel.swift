@@ -29,7 +29,6 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         latitude = location.coordinate.latitude
         longitude = location.coordinate.longitude
-    
         getCityName(for: location) { cityName in
             self.city = cityName
         }

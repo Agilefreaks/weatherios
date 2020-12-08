@@ -13,11 +13,19 @@ class LocationGeocodeTest: XCTestCase {
 
     func testReverseGeocodeToCityName() throws {
         let sut = LocationViewModel()
+        
         let sibiuLocation = CLLocation(latitude: 45.79781812434426, longitude: 24.14944932344487)
+        let expectedResult = "Sibiu"
+        
+        let exp = expectation(description: "Loading City Name")
         
         sut.getCityName(for: sibiuLocation) { cityName in
-            XCTAssertTrue(cityName == "Sibiu")
+            sut.city = cityName
+            exp.fulfill()
         }
+        waitForExpectations(timeout: 3)
+        
+        XCTAssertTrue(sut.city == expectedResult )
     }
 
 
