@@ -9,10 +9,20 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var locationViewModel = LocationViewModel()
+    
     var body: some View {
-        Text("\(locationViewModel.latitude)")
-            .padding()
-        Text("\(locationViewModel.longitude)")
-            .padding()
+        VStack {
+            Text("\(locationViewModel.city)")
+                .font(.largeTitle)
+            Divider()
+                .background(Color.black)
+                .padding(.horizontal, 32)
+                .padding(.bottom)
+            Text("Coordinates:")
+                .padding()
+            Text("Lat: \(locationViewModel.latitude)")
+            Text("Long: \(locationViewModel.longitude)")
+            
+        }
     }
 }
