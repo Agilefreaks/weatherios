@@ -30,14 +30,15 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         latitude = location.coordinate.latitude
         longitude = location.coordinate.longitude
     
-        getCityName(for: location) { placemark in
-            self.city = placemark?.first?.locality ?? ""
+        getCityName(for: location) { cityName in
+            self.city = cityName
         }
     }
     
-    func getCityName(for location: CLLocation, completion: @escaping ([CLPlacemark]?) -> ()) {
+    func getCityName(for location: CLLocation, completion: @escaping (String) -> ()) {
         geocoder.reverseGeocodeLocation(location) { (placemark, _) in
-            completion(placemark)
+            let cityName = placemark?.first?.locality ?? ""
+            completion(cityName)
         }
     }
     
