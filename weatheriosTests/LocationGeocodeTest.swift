@@ -15,9 +15,8 @@ class LocationGeocodeTest: XCTestCase {
         let sut = LocationViewModel()
         let sibiuLocation = CLLocation(latitude: 45.79781812434426, longitude: 24.14944932344487)
         
-        sut.getCityName(for: sibiuLocation) { placemark in
-            sut.city = placemark?.first?.locality ?? ""
-            XCTAssertTrue(sut.city == "Sibiu")
+        sut.getCityName(for: sibiuLocation) { cityName in
+            XCTAssertTrue(cityName == "Sibiu")
         }
     }
 
