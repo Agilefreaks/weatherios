@@ -1,0 +1,32 @@
+//
+//  LocationGeocodeTest.swift
+//  weatheriosTests
+//
+//  Created by Vlad Stanescu on 08.12.2020.
+//
+
+import XCTest
+import CoreLocation
+@testable import weatherios
+
+class LocationGeocodeTest: XCTestCase {
+
+    func testReverseGeocodeToCityName() throws {
+        let sut = LocationViewModel()
+        
+        let sibiuLocation = CLLocation(latitude: 45.79781812434426, longitude: 24.14944932344487)
+        let expectedResult = "Sibiu"
+        
+        let exp = expectation(description: "Loading City Name")
+        
+        sut.getCityName(for: sibiuLocation) { cityName in
+            sut.city = cityName
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 3)
+        
+        XCTAssertTrue(sut.city == expectedResult )
+    }
+
+
+}
