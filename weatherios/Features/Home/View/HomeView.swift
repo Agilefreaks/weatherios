@@ -14,6 +14,10 @@ struct HomeView: View {
         VStack {
             Text("\(locationViewModel.city)")
                 .font(.largeTitle)
+            
+            if let weather = locationViewModel.weather {
+                CurrentWeatherCardView(weatherData: weather)
+            }
             Divider()
                 .background(Color.black)
                 .padding(.horizontal, 32)
@@ -26,3 +30,4 @@ struct HomeView: View {
         }
     }
 }
+

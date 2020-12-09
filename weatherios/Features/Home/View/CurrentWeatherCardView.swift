@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct CurrentWeatherCardView: View {
+    var weatherData: CurrentWeatherQuery.Data.GetCityByName.Weather
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+                HStack {
+                    Text("\(weatherData.summary?.title ?? "No data")")
+                    Text("\(weatherData.temperature?.actual ?? 0)")
+                }
+                .padding()
+                HStack {
+                    Text("Clouds visibility: \(weatherData.clouds?.visibility ?? 0)")
+                    Text("Humidity: \(weatherData.clouds?.humidity ?? 0)")
+                }
+                
+            
+        }
     }
 }
 
-struct CurrentWeatherCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CurrentWeatherCardView()
-    }
-}
+
