@@ -15,7 +15,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var latitude: Double = 0
     @Published var longitude: Double = 0
     @Published var city: String = ""
-    @Published var weather: CurrentWeatherQuery.Data.GetCityByName.Weather?
+    @Published var weather =  CurrentWeatherQuery.Data.GetCityByName.Weather()
     
     override init() {
         super.init()
@@ -49,7 +49,9 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         Network.shared.apollo.fetch(query: CurrentWeatherQuery()) { result in
           switch result {
           case .success(let graphQLResult):
-            self.weather = graphQLResult.data?.getCityByName?.weather
+            if let weatherData = graphQLResult.data?.getCityByName?.weather {
+                self.weather = weatherData
+            }
           case .failure(let error):
             print("Failure! Error: \(error)")
           }
