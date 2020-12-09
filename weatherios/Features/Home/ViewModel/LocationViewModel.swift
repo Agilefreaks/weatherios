@@ -8,8 +8,6 @@
 import Foundation
 import CoreLocation
 
-typealias Weather = CurrentWeatherQuery.Data.GetCityByName.Weather
-
 class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
