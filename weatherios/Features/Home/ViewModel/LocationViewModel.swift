@@ -34,7 +34,9 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             self.city = cityName
             
         }
-        fetchCurrentWeather()
+        fetchCurrentWeather { (weatherData) in
+            self.weather = weatherData
+        }
         
     }
     
@@ -45,12 +47,12 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-    func fetchCurrentWeather() {
+    func fetchCurrentWeather(completion: @escaping (CurrentWeatherQuery.Data.GetCityByName.Weather) -> Void) {
         Network.shared.apollo.fetch(query: CurrentWeatherQuery()) { result in
           switch result {
           case .success(let graphQLResult):
             if let weatherData = graphQLResult.data?.getCityByName?.weather {
-                self.weather = weatherData
+                completion(weatherData)
             }
           case .failure(let error):
             print("Failure! Error: \(error)")
