@@ -1,0 +1,17 @@
+query CurrentWeather {
+  getCityByName(name: "Sibiu", country: "RO", config: { units: metric }) {
+	name
+	weather {
+	  summary {
+		title
+	  }
+	  temperature {
+		actual
+	  }
+	  clouds {
+		visibility
+		humidity
+	  }
+	}
+  }
+}
