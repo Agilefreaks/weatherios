@@ -36,19 +36,16 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             self.city = cityData.locality ?? ""
             self.country = cityData.isoCountryCode ?? ""
             
+            self.fetchCurrentWeather(cityName: self.city, country: self.country) { (weatherData) in
+                self.weather = weatherData
+            }
         }
-        
-        fetchCurrentWeather(cityName: self.city, country: self.country) { (weatherData) in
-            self.weather = weatherData
-        }
-        
     }
     
     func getCityData(for location: CLLocation, completion: @escaping (CLPlacemark) -> ()) {
         geocoder.reverseGeocodeLocation(location) { (placemark, _) in
             guard let cityData = placemark?.first  else { return }
             completion(cityData)
-            
         }
     }
     
