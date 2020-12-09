@@ -20,7 +20,7 @@
 		DE5334B2257F68AB009BF395 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5334B1257F68AB009BF395 /* LocationViewModel.swift */; };
 		DE7D62682580C4A100BEE882 /* CurrentWeatherCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D62672580C4A100BEE882 /* CurrentWeatherCardView.swift */; };
 		DECA88A1257F7B1D00524249 /* LocationGeocodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA88A0257F7B1D00524249 /* LocationGeocodeTest.swift */; };
-		DECA88AF257F7DFE00524249 /* weatheriosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA88AE257F7DFE00524249 /* weatheriosUITests.swift */; };
+		DECA88AF257F7DFE00524249 /* HomeViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA88AE257F7DFE00524249 /* HomeViewUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		DE5334B1257F68AB009BF395 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		DE7D62672580C4A100BEE882 /* CurrentWeatherCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCardView.swift; sourceTree = "<group>"; };
 		DECA88A0257F7B1D00524249 /* LocationGeocodeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGeocodeTest.swift; sourceTree = "<group>"; };
-		DECA88AE257F7DFE00524249 /* weatheriosUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weatheriosUITests.swift; sourceTree = "<group>"; };
+		DECA88AE257F7DFE00524249 /* HomeViewUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +154,7 @@
 		DE533497257F6225009BF395 /* weatheriosUITests */ = {
 			isa = PBXGroup;
 			children = (
-				DECA88AE257F7DFE00524249 /* weatheriosUITests.swift */,
+				DECA88AE257F7DFE00524249 /* HomeViewUITests.swift */,
 				DE53349A257F6225009BF395 /* Info.plist */,
 			);
 			path = weatheriosUITests;
@@ -387,7 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DECA88AF257F7DFE00524249 /* weatheriosUITests.swift in Sources */,
+				DECA88AF257F7DFE00524249 /* HomeViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

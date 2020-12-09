@@ -8,7 +8,10 @@
 import Foundation
 import CoreLocation
 
+typealias Weather = CurrentWeatherQuery.Data.GetCityByName.Weather
+
 class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
@@ -16,7 +19,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var longitude: Double = 0
     @Published var city: String = ""
     @Published var country: String = ""
-    @Published var weather =  CurrentWeatherQuery.Data.GetCityByName.Weather()
+    @Published var weather = Weather()
     
     override init() {
         super.init()
@@ -36,7 +39,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             self.city = cityData.locality ?? ""
             self.country = cityData.isoCountryCode ?? ""
             
-            self.fetchCurrentWeather(cityName: self.city, country: self.country) { (weatherData) in
+            self.fetchCurrentWeather(cityName: self.city, country: self.country) { (weatherData) in            
                 self.weather = weatherData
             }
         }
@@ -49,7 +52,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-    func fetchCurrentWeather(cityName: String!, country: String, completion: @escaping (CurrentWeatherQuery.Data.GetCityByName.Weather) -> Void) {
+    func fetchCurrentWeather(cityName: String!, country: String, completion: @escaping (Weather) -> Void) {
         Network.shared.apollo.fetch(query: CurrentWeatherQuery(name: cityName, country: country)) { result in
           switch result {
           case .success(let graphQLResult):

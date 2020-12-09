@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CurrentWeatherCardView: View {
-    var weatherData: CurrentWeatherQuery.Data.GetCityByName.Weather
+    var weatherData: Weather
     
     var body: some View {
         VStack {
