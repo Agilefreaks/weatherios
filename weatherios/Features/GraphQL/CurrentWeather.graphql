@@ -1,9 +1,10 @@
-query CurrentWeather {
-  getCityByName(name: "Sibiu", country: "RO", config: { units: metric }) {
+query CurrentWeather($name: String!, $country: String) {
+  getCityByName(name: $name, country: $country, config: { units: metric }) {
 	name
 	weather {
 	  summary {
 		title
+	    icon
 	  }
 	  temperature {
 		actual

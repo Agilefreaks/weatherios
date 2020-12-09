@@ -8,8 +8,8 @@ public final class CurrentWeatherQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query CurrentWeather {
-      getCityByName(name: "Sibiu", country: "RO", config: {units: metric}) {
+    query CurrentWeather($name: String!, $country: String) {
+      getCityByName(name: $name, country: $country, config: {units: metric}) {
         __typename
         name
         weather {
@@ -17,6 +17,7 @@ public final class CurrentWeatherQuery: GraphQLQuery {
           summary {
             __typename
             title
+            icon
           }
           temperature {
             __typename
@@ -34,7 +35,16 @@ public final class CurrentWeatherQuery: GraphQLQuery {
 
   public let operationName: String = "CurrentWeather"
 
-  public init() {
+  public var name: String
+  public var country: String?
+
+  public init(name: String, country: String? = nil) {
+    self.name = name
+    self.country = country
+  }
+
+  public var variables: GraphQLMap? {
+    return ["name": name, "country": country]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -42,7 +52,7 @@ public final class CurrentWeatherQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("getCityByName", arguments: ["name": "Sibiu", "country": "RO", "config": ["units": "metric"]], type: .object(GetCityByName.selections)),
+        GraphQLField("getCityByName", arguments: ["name": GraphQLVariable("name"), "country": GraphQLVariable("country"), "config": ["units": "metric"]], type: .object(GetCityByName.selections)),
       ]
     }
 
@@ -178,6 +188,7 @@ public final class CurrentWeatherQuery: GraphQLQuery {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("title", type: .scalar(String.self)),
+              GraphQLField("icon", type: .scalar(String.self)),
             ]
           }
 
@@ -187,8 +198,8 @@ public final class CurrentWeatherQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(title: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Summary", "title": title])
+          public init(title: String? = nil, icon: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Summary", "title": title, "icon": icon])
           }
 
           public var __typename: String {
@@ -206,6 +217,15 @@ public final class CurrentWeatherQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "title")
+            }
+          }
+
+          public var icon: String? {
+            get {
+              return resultMap["icon"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "icon")
             }
           }
         }

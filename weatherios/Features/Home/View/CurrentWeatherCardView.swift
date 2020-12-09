@@ -14,7 +14,7 @@ struct CurrentWeatherCardView: View {
         VStack {
                 HStack {
                     Text("\(weatherData.summary?.title ?? "No data")")
-                    Text("\(weatherData.temperature?.actual ?? 0)")
+                    Text("\(weatherData.temperature?.actual ?? 0, specifier: "%.2f")")
                 }
                 .padding()
                 HStack {

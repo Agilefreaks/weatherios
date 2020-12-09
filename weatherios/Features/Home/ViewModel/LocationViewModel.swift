@@ -15,6 +15,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var latitude: Double = 0
     @Published var longitude: Double = 0
     @Published var city: String = ""
+    @Published var country: String = ""
     @Published var weather =  CurrentWeatherQuery.Data.GetCityByName.Weather()
     
     override init() {
@@ -30,25 +31,29 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         latitude = location.coordinate.latitude
         longitude = location.coordinate.longitude
-        getCityName(for: location) { cityName in
-            self.city = cityName
+        
+        getCityData(for: location) { cityData in
+            self.city = cityData.locality ?? ""
+            self.country = cityData.isoCountryCode ?? ""
             
         }
-        fetchCurrentWeather { (weatherData) in
+        
+        fetchCurrentWeather(cityName: self.city, country: self.country) { (weatherData) in
             self.weather = weatherData
         }
         
     }
     
-    func getCityName(for location: CLLocation, completion: @escaping (String) -> ()) {
+    func getCityData(for location: CLLocation, completion: @escaping (CLPlacemark) -> ()) {
         geocoder.reverseGeocodeLocation(location) { (placemark, _) in
-            let cityName = placemark?.first?.locality ?? ""
-            completion(cityName)
+            guard let cityData = placemark?.first  else { return }
+            completion(cityData)
+            
         }
     }
     
-    func fetchCurrentWeather(completion: @escaping (CurrentWeatherQuery.Data.GetCityByName.Weather) -> Void) {
-        Network.shared.apollo.fetch(query: CurrentWeatherQuery()) { result in
+    func fetchCurrentWeather(cityName: String!, country: String, completion: @escaping (CurrentWeatherQuery.Data.GetCityByName.Weather) -> Void) {
+        Network.shared.apollo.fetch(query: CurrentWeatherQuery(name: cityName, country: country)) { result in
           switch result {
           case .success(let graphQLResult):
             if let weatherData = graphQLResult.data?.getCityByName?.weather {
