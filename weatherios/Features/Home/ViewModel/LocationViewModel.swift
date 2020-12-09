@@ -15,6 +15,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var latitude: Double = 0
     @Published var longitude: Double = 0
     @Published var city: String = ""
+    @Published var weather: CurrentWeatherQuery.Data.GetCityByName.Weather?
     
     override init() {
         super.init()
@@ -31,13 +32,27 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         longitude = location.coordinate.longitude
         getCityName(for: location) { cityName in
             self.city = cityName
+            
         }
+        fetchCurrentWeather()
+        
     }
     
     func getCityName(for location: CLLocation, completion: @escaping (String) -> ()) {
         geocoder.reverseGeocodeLocation(location) { (placemark, _) in
             let cityName = placemark?.first?.locality ?? ""
             completion(cityName)
+        }
+    }
+    
+    func fetchCurrentWeather() {
+        Network.shared.apollo.fetch(query: CurrentWeatherQuery()) { result in
+          switch result {
+          case .success(let graphQLResult):
+            self.weather = graphQLResult.data?.getCityByName?.weather
+          case .failure(let error):
+            print("Failure! Error: \(error)")
+          }
         }
     }
     
