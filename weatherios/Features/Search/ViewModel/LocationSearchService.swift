@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 import Combine
 
-class LocationService:NSObject, ObservableObject {
+class LocationSearchService:NSObject, ObservableObject {
     
     enum LocationStatus: Equatable {
             case idle
@@ -46,7 +46,7 @@ class LocationService:NSObject, ObservableObject {
         }
 }
 
-extension LocationService: MKLocalSearchCompleterDelegate {
+extension LocationSearchService: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         self.searchResults = completer.results.filter({ $0.subtitle == "" })
         self.status = completer.results.isEmpty ? .noResults : .result

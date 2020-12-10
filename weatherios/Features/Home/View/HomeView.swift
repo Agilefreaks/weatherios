@@ -11,7 +11,6 @@ struct HomeView: View {
     @ObservedObject var locationViewModel = LocationViewModel()
     
     @State var isButtonClicked: Bool = false
-    @State var selectedCityData: [String] = []
     
     var body: some View {
         NavigationView {
@@ -24,7 +23,7 @@ struct HomeView: View {
                 }
                 .padding()
                 NavigationLink(
-                    destination: SearchView(isButtonClicked: $isButtonClicked, selectedCityData: $selectedCityData),
+                    destination: SearchView(locationViewModel: locationViewModel, isButtonClicked: $isButtonClicked),
                     isActive: $isButtonClicked) {
                     EmptyView()
                 }
@@ -34,13 +33,8 @@ struct HomeView: View {
                     Text("Select City")
                 })
                 Spacer()
-                if let selecedtest = selectedCityData.first {
-                    Text(selecedtest)
-                }
-               
             }
         }
-        
     }
 }
 

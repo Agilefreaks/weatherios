@@ -13,12 +13,12 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
-    var country: String = ""
-    
     @Published var latitude: Double = 0
     @Published var longitude: Double = 0
     @Published var city: String = ""
     @Published var weather = Weather()
+    
+    var country: String = ""
     
     var title: String {
         return weather.summary?.title ?? "No Summary data"

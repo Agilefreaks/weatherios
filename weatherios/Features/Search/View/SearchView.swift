@@ -8,20 +8,14 @@
 import SwiftUI
 
 struct SearchView: View {
-    @ObservedObject var locationService = LocationService()
+    @ObservedObject var locationService = LocationSearchService()
+    @ObservedObject var locationViewModel: LocationViewModel
     @Binding var isButtonClicked: Bool
-    
-    @Binding var selectedCityData: [String]
     
     var body: some View {
         VStack {
             HStack {
                 TextField("Search city", text: $locationService.queryFragment)
-//                Button(action: {
-//                    isButtonClicked.toggle()
-//                }, label: {
-//                    Text("Select City")
-//                })
             }
             .padding()
             .background(Color(.systemGray5))
@@ -33,9 +27,14 @@ struct SearchView: View {
                     Text(result.title)
                         .padding(.vertical)
                         .onTapGesture {
-                            print(result.title.split(separator: ","))
                             let resultData = result.title.components(separatedBy: ",")
-                            self.selectedCityData = resultData
+                            let cityTitle = resultData.first
+                            let cityCountryCode = Locale(identifier: "en_US_POSIX").isoCode(for: resultData.last!)
+                            
+                            self.locationViewModel.fetchCurrentWeather(cityName: cityTitle, country: cityCountryCode ?? "") { result in
+                                self.locationViewModel.weather = result
+                                self.locationViewModel.city = cityTitle ?? ""
+                            }
                             self.isButtonClicked = false
                         }
                 }
