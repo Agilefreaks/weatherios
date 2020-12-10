@@ -59,12 +59,13 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var visibility: String {
         let cloudsVisibility = weather.clouds?.visibility ?? 0
         let formattedVisibility = String(format: "%d%%", cloudsVisibility / 100)
-        return "Visibility " + formattedVisibility
+        return "Visibility: " + formattedVisibility
     }
     
     var humidity: String {
         let cloudsHumidity = weather.clouds?.humidity ?? 0
-        return String("Humidity: \(cloudsHumidity)")
+        let formattedHumidity = String(format: "%d%%", cloudsHumidity)
+        return String("Humidity: \(formattedHumidity)")
     }
     
     override init() {

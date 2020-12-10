@@ -9,7 +9,9 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var locationService = LocationService()
-    @State var isButtonClicked: Bool = false
+    @Binding var isButtonClicked: Bool
+    
+    @Binding var selectedCityData: [String]
     
     var body: some View {
         VStack {
@@ -30,6 +32,12 @@ struct SearchView: View {
                 ForEach(locationService.searchResults, id: \.self) { result in
                     Text(result.title)
                         .padding(.vertical)
+                        .onTapGesture {
+                            print(result.title.split(separator: ","))
+                            let resultData = result.title.components(separatedBy: ",")
+                            self.selectedCityData = resultData
+                            self.isButtonClicked = false
+                        }
                 }
             }
         }
