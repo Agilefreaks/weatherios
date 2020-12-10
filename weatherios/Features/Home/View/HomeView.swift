@@ -21,7 +21,6 @@ struct HomeView: View {
                         .accessibility(identifier: TestIdentifiers.textCity.rawValue)
                     CurrentWeatherCardView(locationViewModel: locationViewModel)
                 }
-                .padding(.top)
                 .padding()
                 NavigationLink(
                     destination: SearchView(),
@@ -34,14 +33,6 @@ struct HomeView: View {
                     Text("Select City")
                 })
                 Spacer()
-                VStack {
-                    Text("Coordinates:")
-                        .padding()
-                    Text("Lat: \(locationViewModel.latitude)")
-                    Text("Long: \(locationViewModel.longitude)")
-                }
-                .padding()
-                .padding(.bottom)
                 
             }
         }

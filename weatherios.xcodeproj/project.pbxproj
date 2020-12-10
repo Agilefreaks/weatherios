@@ -12,6 +12,7 @@
 		DE02AD022580A52000619656 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02AD012580A52000619656 /* API.swift */; };
 		DE02AD072580A66900619656 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02AD062580A66900619656 /* Network.swift */; };
 		DE0987EB258100B100151300 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0987EA258100B100151300 /* TypeAliases.swift */; };
+		DE4AF79A25822B3400E797ED /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4AF79925822B3400E797ED /* LocationService.swift */; };
 		DE533477257F6221009BF395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533476257F6221009BF395 /* AppDelegate.swift */; };
 		DE533479257F6221009BF395 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533478257F6221009BF395 /* SceneDelegate.swift */; };
 		DE53347B257F6221009BF395 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE53347A257F6221009BF395 /* HomeView.swift */; };
@@ -52,6 +53,7 @@
 		DE02AD012580A52000619656 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = weatherios/API.swift; sourceTree = SOURCE_ROOT; };
 		DE02AD062580A66900619656 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		DE0987EA258100B100151300 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
+		DE4AF79925822B3400E797ED /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		DE533473257F6221009BF395 /* weatherios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE533476257F6221009BF395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE533478257F6221009BF395 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		DE4AF79825822B1200E797ED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DE4AF79925822B3400E797ED /* LocationService.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DE53346A257F6221009BF395 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +193,7 @@
 		DE685BF5258224AF0087C29B /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				DE4AF79825822B1200E797ED /* ViewModel */,
 				DE685BFB258224CA0087C29B /* View */,
 			);
 			path = Search;
@@ -208,9 +219,9 @@
 		DECA888D257F6FD500524249 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				DE685BF5258224AF0087C29B /* Search */,
 				DE0987E92581009100151300 /* Utils */,
 				DE02ACF82580A1F900619656 /* GraphQL */,
+				DE685BF5258224AF0087C29B /* Search */,
 				DECA888E257F6FE300524249 /* Home */,
 			);
 			path = Features;
@@ -413,6 +424,7 @@
 				DE533479257F6221009BF395 /* SceneDelegate.swift in Sources */,
 				DE53347B257F6221009BF395 /* HomeView.swift in Sources */,
 				DE02AD022580A52000619656 /* API.swift in Sources */,
+				DE4AF79A25822B3400E797ED /* LocationService.swift in Sources */,
 				DE685BF7258224C60087C29B /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
