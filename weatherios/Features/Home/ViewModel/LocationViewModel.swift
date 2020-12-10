@@ -100,16 +100,17 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func fetchCurrentWeather(cityName: String!, country: String, completion: @escaping (Weather) -> Void) {
-        Network.shared.apollo.fetch(query: CurrentWeatherQuery(name: cityName, country: country)) { result in
-          switch result {
-          case .success(let graphQLResult):
-            if let weatherData = graphQLResult.data?.getCityByName?.weather {
-                completion(weatherData)
+        Network.shared.getCityByName(name: cityName, country: country) { result in
+            switch result {
+            case .success(let graphQLResult):
+                if let weatherData = graphQLResult.weather {
+                    completion(weatherData)
+                }
+            case .failure(let error ):
+                print(error)
             }
-          case .failure(let error):
-            print("Failure! Error: \(error)")
-          }
+        }
         }
     }
     
-}
+
