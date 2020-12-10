@@ -32,19 +32,21 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         switch weatherIconID {
         case "01d":
             return "sun.max"
-        case "02d":
+        case "01n":
+            return "moon"
+        case "02d", "02n":
             return "cloud.sun"
         case "03d", "03n", "04d", "04n":
             return "cloud"
-        case "09d":
+        case "09d", "09n":
             return "cloud.heavyrain"
-        case "10d":
+        case "10d", "10n":
             return "cloud.rain"
-        case "11d":
+        case "11d", "11n":
             return "cloud.bolt"
-        case "13d":
+        case "13d", "13n":
             return "snow"
-        case "50d":
+        case "50d", "50n":
             return "cloud.fog"
         default:
             return "sun.max"
