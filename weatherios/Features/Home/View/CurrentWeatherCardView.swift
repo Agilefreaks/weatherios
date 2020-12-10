@@ -47,8 +47,9 @@ struct CurrentWeatherCardView: View {
         return String(format: "%.2f °C", temperature)
     }
     
-    var visibility: Int {
-        return weatherData.clouds?.visibility ?? 0
+    var visibility: String {
+        let cloudsVisibility = weatherData.clouds?.visibility ?? 0
+        return String(format: "%d%%",cloudsVisibility / 100)
     }
     
     var humidity: Int {
@@ -58,14 +59,20 @@ struct CurrentWeatherCardView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            VStack {
                 Text(title)
+                    .font(.title2)
+                    .foregroundColor(Color(UIColor.darkGray))
+                    .padding(.bottom)
                 Image(systemName: weatherIconName)
+                    .font(.system(size: 60))
+                    .padding(.bottom)
                 Text(actualTemperature)
+                    .font(.system(size: 24))
             }
             .padding()
             HStack {
-                Text("Clouds visibility: \(visibility)")
+                Text("Visibility: \(visibility)")
                 Text("Humidity: \(humidity)")
             }
         }
