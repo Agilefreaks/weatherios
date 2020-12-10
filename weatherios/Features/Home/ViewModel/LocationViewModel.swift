@@ -29,7 +29,6 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     var weatherIconName: String {
-        //TODO: Move this
         switch weatherIconID {
         case "01d":
             return "sun.max"
