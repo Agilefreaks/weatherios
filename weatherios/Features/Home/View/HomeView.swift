@@ -13,9 +13,9 @@ struct HomeView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("\(locationViewModel.city)")
+                Text(locationViewModel.city)
                     .font(.system(size: 52))
-                CurrentWeatherCardView(weatherData: locationViewModel.weather)
+                CurrentWeatherCardView(locationViewModel: locationViewModel)
             }
             .padding(.top)
             .padding()

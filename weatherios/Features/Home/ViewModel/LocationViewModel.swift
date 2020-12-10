@@ -13,11 +13,60 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
+    var country: String = ""
+    
     @Published var latitude: Double = 0
     @Published var longitude: Double = 0
     @Published var city: String = ""
-    @Published var country: String = ""
     @Published var weather = Weather()
+    
+    var title: String {
+        return weather.summary?.title ?? "No Summary data"
+    }
+    
+    var weatherIconID: String {
+        return weather.summary?.icon ?? ""
+    }
+    
+    var weatherIconName: String {
+        //TODO: Move this
+        switch weatherIconID {
+        case "01d":
+            return "sun.max"
+        case "02d":
+            return "cloud.sun"
+        case "03d", "03n", "04d", "04n":
+            return "cloud"
+        case "09d":
+            return "cloud.heavyrain"
+        case "10d":
+            return "cloud.rain"
+        case "11d":
+            return "cloud.bolt"
+        case "13d":
+            return "snow"
+        case "50d":
+            return "cloud.fog"
+        default:
+            return "sun.max"
+        }
+    }
+    
+    var actualTemperature: String {
+        let temperature = weather.temperature?.actual ?? 0
+        return String(format: "%.2f °C", temperature)
+    }
+    
+    var visibility: String {
+        let cloudsVisibility = weather.clouds?.visibility ?? 0
+        let formattedVisibility = String(format: "%d%%", cloudsVisibility / 100)
+        return "Visibility " + formattedVisibility
+    }
+    
+    var humidity: String {
+        let cloudsHumidity = weather.clouds?.humidity ?? 0
+        return String("Humidity: \(cloudsHumidity)")
+    }
     
     override init() {
         super.init()
