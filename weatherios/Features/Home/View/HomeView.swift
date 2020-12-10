@@ -12,17 +12,22 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Text("\(locationViewModel.city)")
-                .font(.largeTitle)
-            CurrentWeatherCardView(weatherData: locationViewModel.weather)
-            Divider()
-                .background(Color.black)
-                .padding(.horizontal, 32)
-                .padding(.bottom)
-            Text("Coordinates:")
-                .padding()
-            Text("Lat: \(locationViewModel.latitude)")
-            Text("Long: \(locationViewModel.longitude)")
+            VStack {
+                Text("\(locationViewModel.city)")
+                    .font(.system(size: 52))
+                CurrentWeatherCardView(weatherData: locationViewModel.weather)
+            }
+            .padding(.top)
+            .padding()
+            Spacer()
+            VStack {
+                Text("Coordinates:")
+                    .padding()
+                Text("Lat: \(locationViewModel.latitude)")
+                Text("Long: \(locationViewModel.longitude)")
+            }
+            .padding()
+            .padding(.bottom)
             
         }
     }
