@@ -8,26 +8,42 @@
 import XCTest
 
 class HomeViewUITests: XCTestCase {
-
+    
+    let app = XCUIApplication()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    
+    override func setUp() {
+        continueAfterFailure = false
         app.launch()
+    }
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testHomeIsDisplayed() throws {
+        let textCity = app.staticTexts[TestIdentifiers.textCity.rawValue]
+        XCTAssert(textCity.waitForExistence(timeout: 10))
+        XCTAssert(textCity.exists)
+        
+        let textWeatherSummary = app.staticTexts[TestIdentifiers.textWeatherSummary.rawValue]
+        XCTAssert(textWeatherSummary.waitForExistence(timeout: 10))
+        XCTAssert(textWeatherSummary.exists)
+        
+        let imageWeather = app.images[TestIdentifiers.imageWeather.rawValue]
+        XCTAssert(imageWeather.waitForExistence(timeout: 10))
+        XCTAssert(imageWeather.exists)
+        
+        let textWeatherTemperature = app.staticTexts[TestIdentifiers.textWeatherTemperature.rawValue]
+        XCTAssert(textWeatherTemperature.waitForExistence(timeout: 10))
+        XCTAssert(textWeatherTemperature.exists)
+        
+        let textWeatherVisibility = app.staticTexts[TestIdentifiers.textWeatherVisibility.rawValue]
+        XCTAssert(textWeatherVisibility.waitForExistence(timeout: 10))
+        XCTAssert(textWeatherVisibility.exists)
+        
+        let textWeatherHumidity = app.staticTexts[TestIdentifiers.textWeatherHumidity.rawValue]
+        XCTAssert(textWeatherHumidity.waitForExistence(timeout: 10))
+        XCTAssert(textWeatherHumidity.exists)
     }
 }

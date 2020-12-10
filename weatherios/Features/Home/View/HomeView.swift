@@ -15,6 +15,7 @@ struct HomeView: View {
             VStack {
                 Text(locationViewModel.city)
                     .font(.system(size: 52))
+                    .accessibility(identifier: TestIdentifiers.textCity.rawValue)
                 CurrentWeatherCardView(locationViewModel: locationViewModel)
             }
             .padding(.top)
