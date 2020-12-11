@@ -10,27 +10,27 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var locationViewModel = LocationViewModel()
     
-    @State var isButtonClicked: Bool = false
+    @State var isShowingSearchView: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
-                VStack {
-                    Text(locationViewModel.city)
-                        .font(.system(size: 52))
-                        .accessibility(identifier: TestIdentifiers.textCity.rawValue)
-                    CurrentWeatherCardView(locationViewModel: locationViewModel)
-                }
-                .padding()
+                CurrentWeatherCardView(locationViewModel: locationViewModel)
                 NavigationLink(
-                    destination: SearchView(locationViewModel: locationViewModel, isButtonClicked: $isButtonClicked),
-                    isActive: $isButtonClicked) {
+                    destination: SearchView(locationViewModel: locationViewModel, isShowingSearchView: $isShowingSearchView),
+                    isActive: $isShowingSearchView) {
                     EmptyView()
                 }
+                Spacer()
                 Button(action: {
-                    isButtonClicked.toggle()
+                    isShowingSearchView.toggle()
                 }, label: {
                     Text("Select City")
+                        .font(.system(size: 28))
+                        .foregroundColor(Color.white)
+                        .padding()
+                        .background(Color.black)
+                        .cornerRadius(8)
                 })
                 Spacer()
             }

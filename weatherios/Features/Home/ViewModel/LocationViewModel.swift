@@ -13,9 +13,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
-    @Published var latitude: Double = 0
-    @Published var longitude: Double = 0
-    @Published var city: String = ""
+    @Published var city: String = "No location"
     @Published var weather = Weather()
     
     var country: String = ""
@@ -81,9 +79,6 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
-        latitude = location.coordinate.latitude
-        longitude = location.coordinate.longitude
-        
         getCityData(for: location) { cityData in
             self.city = cityData.locality ?? ""
             self.country = cityData.isoCountryCode ?? ""
@@ -112,7 +107,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 print(error)
             }
         }
-        }
     }
+}
     
 

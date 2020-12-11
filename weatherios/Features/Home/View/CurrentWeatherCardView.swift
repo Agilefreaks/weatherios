@@ -13,6 +13,9 @@ struct CurrentWeatherCardView: View {
     var body: some View {
         VStack {
             VStack {
+                Text(locationViewModel.city)
+                    .font(.system(size: 52))
+                    .accessibility(identifier: TestIdentifiers.textCity.rawValue)
                 Text(locationViewModel.title)
                     .font(.title2)
                     .foregroundColor(Color(UIColor.darkGray))

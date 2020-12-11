@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @ObservedObject var locationService = LocationSearchService()
     @ObservedObject var locationViewModel: LocationViewModel
-    @Binding var isButtonClicked: Bool
+    @Binding var isShowingSearchView: Bool
     
     var body: some View {
         VStack {
@@ -35,7 +35,7 @@ struct SearchView: View {
                                 self.locationViewModel.weather = result
                                 self.locationViewModel.city = cityTitle ?? ""
                             }
-                            self.isButtonClicked = false
+                            self.isShowingSearchView = false
                         }
                 }
             }

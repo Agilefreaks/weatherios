@@ -21,21 +21,21 @@ enum ApiStatus: String {
     }
 }
 
-class MockedResponses {
-    let apoloAPI:  Network
-    let status: ApiStatus
-    
-    init(api: Network, status: ApiStatus) {
-        self.apoloAPI = api
-        self.status = status
-    }
-    
-//    func getMockedResult() -> Result<Any, Error> {
-//        switch status {
-//        case .success:
-//            return Result.success("")
-//        default:
-//            <#code#>
-//        }
+//class MockedResponses {
+//    let apoloAPI:  Network
+//    let status: ApiStatus
+//    
+//    init(api: Network, status: ApiStatus) {
+//        self.apoloAPI = api
+//        self.status = status
 //    }
-}
+//    
+////    func getMockedResult() -> Result<Any, Error> {
+////        switch status {
+////        case .success:
+////            return Result.success("")
+////        default:
+////            <#code#>
+////        }
+////    }
+//}
