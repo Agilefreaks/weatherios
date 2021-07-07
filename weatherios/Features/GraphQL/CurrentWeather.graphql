@@ -1,0 +1,18 @@
+query CurrentWeather($name: String!, $country: String) {
+  getCityByName(name: $name, country: $country, config: { units: metric }) {
+	name
+	weather {
+	  summary {
+		title
+	    icon
+	  }
+	  temperature {
+		actual
+	  }
+	  clouds {
+		visibility
+		humidity
+	  }
+	}
+  }
+}

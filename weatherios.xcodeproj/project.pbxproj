@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE02ACEE25809FB300619656 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = DE02ACED25809FB300619656 /* Apollo */; };
+		DE02ACF025809FB300619656 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = DE02ACEF25809FB300619656 /* ApolloWebSocket */; };
+		DE02AD022580A52000619656 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02AD012580A52000619656 /* API.swift */; };
+		DE02AD072580A66900619656 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02AD062580A66900619656 /* Network.swift */; };
+		DE0987EB258100B100151300 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0987EA258100B100151300 /* TypeAliases.swift */; };
 		DE533477257F6221009BF395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533476257F6221009BF395 /* AppDelegate.swift */; };
 		DE533479257F6221009BF395 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533478257F6221009BF395 /* SceneDelegate.swift */; };
 		DE53347B257F6221009BF395 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE53347A257F6221009BF395 /* HomeView.swift */; };
@@ -14,8 +19,13 @@
 		DE533480257F6224009BF395 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE53347F257F6224009BF395 /* Preview Assets.xcassets */; };
 		DE533483257F6224009BF395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE533481257F6224009BF395 /* LaunchScreen.storyboard */; };
 		DE5334B2257F68AB009BF395 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5334B1257F68AB009BF395 /* LocationViewModel.swift */; };
+		DE685BD8258214CC0087C29B /* TestIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE685BD7258214CC0087C29B /* TestIdentifiers.swift */; };
+		DE685BDF258217BE0087C29B /* TestIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE685BD7258214CC0087C29B /* TestIdentifiers.swift */; };
+		DE685BE7258219430087C29B /* MokedResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE685BE6258219430087C29B /* MokedResponses.swift */; };
+		DE685BF1258219F20087C29B /* MokedResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE685BE6258219430087C29B /* MokedResponses.swift */; };
+		DE7D62682580C4A100BEE882 /* CurrentWeatherCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D62672580C4A100BEE882 /* CurrentWeatherCardView.swift */; };
 		DECA88A1257F7B1D00524249 /* LocationGeocodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA88A0257F7B1D00524249 /* LocationGeocodeTest.swift */; };
-		DECA88AF257F7DFE00524249 /* weatheriosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA88AE257F7DFE00524249 /* weatheriosUITests.swift */; };
+		DECA88AF257F7DFE00524249 /* HomeViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA88AE257F7DFE00524249 /* HomeViewUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE02ACF92580A21A00619656 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = schema.json; path = weatherios/schema.json; sourceTree = SOURCE_ROOT; };
+		DE02ACFA2580A43500619656 /* CurrentWeather.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CurrentWeather.graphql; sourceTree = "<group>"; };
+		DE02AD012580A52000619656 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = weatherios/API.swift; sourceTree = SOURCE_ROOT; };
+		DE02AD062580A66900619656 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		DE0987EA258100B100151300 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		DE533473257F6221009BF395 /* weatherios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE533476257F6221009BF395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE533478257F6221009BF395 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,8 +64,11 @@
 		DE533494257F6225009BF395 /* weatheriosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatheriosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE53349A257F6225009BF395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5334B1257F68AB009BF395 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		DE685BD7258214CC0087C29B /* TestIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestIdentifiers.swift; sourceTree = "<group>"; };
+		DE685BE6258219430087C29B /* MokedResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokedResponses.swift; sourceTree = "<group>"; };
+		DE7D62672580C4A100BEE882 /* CurrentWeatherCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCardView.swift; sourceTree = "<group>"; };
 		DECA88A0257F7B1D00524249 /* LocationGeocodeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGeocodeTest.swift; sourceTree = "<group>"; };
-		DECA88AE257F7DFE00524249 /* weatheriosUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weatheriosUITests.swift; sourceTree = "<group>"; };
+		DECA88AE257F7DFE00524249 /* HomeViewUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE02ACEE25809FB300619656 /* Apollo in Frameworks */,
+				DE02ACF025809FB300619656 /* ApolloWebSocket in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +98,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE02ACF82580A1F900619656 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				DE02AD012580A52000619656 /* API.swift */,
+				DE02ACF92580A21A00619656 /* schema.json */,
+				DE02ACFA2580A43500619656 /* CurrentWeather.graphql */,
+				DE02AD062580A66900619656 /* Network.swift */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		DE0987E92581009100151300 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DE685BE6258219430087C29B /* MokedResponses.swift */,
+				DE0987EA258100B100151300 /* TypeAliases.swift */,
+				DE685BD7258214CC0087C29B /* TestIdentifiers.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		DE53346A257F6221009BF395 = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +172,7 @@
 		DE533497257F6225009BF395 /* weatheriosUITests */ = {
 			isa = PBXGroup;
 			children = (
-				DECA88AE257F7DFE00524249 /* weatheriosUITests.swift */,
+				DECA88AE257F7DFE00524249 /* HomeViewUITests.swift */,
 				DE53349A257F6225009BF395 /* Info.plist */,
 			);
 			path = weatheriosUITests;
@@ -149,6 +190,8 @@
 		DECA888D257F6FD500524249 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				DE0987E92581009100151300 /* Utils */,
+				DE02ACF82580A1F900619656 /* GraphQL */,
 				DECA888E257F6FE300524249 /* Home */,
 			);
 			path = Features;
@@ -167,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				DE53347A257F6221009BF395 /* HomeView.swift */,
+				DE7D62672580C4A100BEE882 /* CurrentWeatherCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE53349D257F6225009BF395 /* Build configuration list for PBXNativeTarget "weatherios" */;
 			buildPhases = (
+				DE02ACF42580A05200619656 /* Apollo CLI */,
 				DE53346F257F6221009BF395 /* Sources */,
 				DE533470257F6221009BF395 /* Frameworks */,
 				DE533471257F6221009BF395 /* Resources */,
@@ -195,6 +240,10 @@
 			dependencies = (
 			);
 			name = weatherios;
+			packageProductDependencies = (
+				DE02ACED25809FB300619656 /* Apollo */,
+				DE02ACEF25809FB300619656 /* ApolloWebSocket */,
+			);
 			productName = weatherios;
 			productReference = DE533473257F6221009BF395 /* weatherios.app */;
 			productType = "com.apple.product-type.application";
@@ -268,6 +317,9 @@
 				Base,
 			);
 			mainGroup = DE53346A257F6221009BF395;
+			packageReferences = (
+				DE02ACEC25809FB300619656 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = DE533474257F6221009BF395 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -306,15 +358,42 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DE02ACF42580A05200619656 /* Apollo CLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Apollo CLI";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://graphql-weather-api.herokuapp.com/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE53346F257F6221009BF395 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DE5334B2257F68AB009BF395 /* LocationViewModel.swift in Sources */,
+				DE685BD8258214CC0087C29B /* TestIdentifiers.swift in Sources */,
 				DE533477257F6221009BF395 /* AppDelegate.swift in Sources */,
+				DE7D62682580C4A100BEE882 /* CurrentWeatherCardView.swift in Sources */,
+				DE0987EB258100B100151300 /* TypeAliases.swift in Sources */,
+				DE685BF1258219F20087C29B /* MokedResponses.swift in Sources */,
+				DE02AD072580A66900619656 /* Network.swift in Sources */,
 				DE533479257F6221009BF395 /* SceneDelegate.swift in Sources */,
 				DE53347B257F6221009BF395 /* HomeView.swift in Sources */,
+				DE02AD022580A52000619656 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DECA88A1257F7B1D00524249 /* LocationGeocodeTest.swift in Sources */,
+				DE685BE7258219430087C29B /* MokedResponses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +410,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DECA88AF257F7DFE00524249 /* weatheriosUITests.swift in Sources */,
+				DE685BDF258217BE0087C29B /* TestIdentifiers.swift in Sources */,
+				DECA88AF257F7DFE00524249 /* HomeViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,6 +730,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DE02ACEC25809FB300619656 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.38.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE02ACED25809FB300619656 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE02ACEC25809FB300619656 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		DE02ACEF25809FB300619656 /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE02ACEC25809FB300619656 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DE53346B257F6221009BF395 /* Project object */;
 }

@@ -11,21 +11,24 @@ import CoreLocation
 
 class LocationGeocodeTest: XCTestCase {
 
-    func testReverseGeocodeToCityName() throws {
+    func testReverseGeocodeToCityData() throws {
         let sut = LocationViewModel()
         
         let sibiuLocation = CLLocation(latitude: 45.79781812434426, longitude: 24.14944932344487)
-        let expectedResult = "Sibiu"
+        let expectedCityName = "Sibiu"
+        let expectedCountryCode = "RO"
         
         let exp = expectation(description: "Loading City Name")
         
-        sut.getCityName(for: sibiuLocation) { cityName in
-            sut.city = cityName
+        sut.getCityData(for: sibiuLocation) { cityData in
+            sut.city = cityData.locality ?? ""
+            sut.country = cityData.isoCountryCode ?? ""
             exp.fulfill()
         }
         waitForExpectations(timeout: 3)
         
-        XCTAssertTrue(sut.city == expectedResult )
+        XCTAssertTrue(sut.city == expectedCityName )
+        XCTAssertTrue(sut.country == expectedCountryCode )
     }
 
 

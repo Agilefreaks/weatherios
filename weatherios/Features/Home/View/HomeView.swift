@@ -12,17 +12,25 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Text("\(locationViewModel.city)")
-                .font(.largeTitle)
-            Divider()
-                .background(Color.black)
-                .padding(.horizontal, 32)
-                .padding(.bottom)
-            Text("Coordinates:")
-                .padding()
-            Text("Lat: \(locationViewModel.latitude)")
-            Text("Long: \(locationViewModel.longitude)")
+            VStack {
+                Text(locationViewModel.city)
+                    .font(.system(size: 52))
+                    .accessibility(identifier: TestIdentifiers.textCity.rawValue)
+                CurrentWeatherCardView(locationViewModel: locationViewModel)
+            }
+            .padding(.top)
+            .padding()
+            Spacer()
+            VStack {
+                Text("Coordinates:")
+                    .padding()
+                Text("Lat: \(locationViewModel.latitude)")
+                Text("Long: \(locationViewModel.longitude)")
+            }
+            .padding()
+            .padding(.bottom)
             
         }
     }
 }
+
